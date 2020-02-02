@@ -1,0 +1,6 @@
+export class Onenode {
+	public hostname:string;
+	public uuid:string;
+	public health:{};
+	public system_info:{};
+}

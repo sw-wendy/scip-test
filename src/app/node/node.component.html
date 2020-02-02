@@ -1,0 +1,56 @@
+<div class="demo">
+  <div class="header">header</div>
+  <div class="content">
+    <div class="nav-bar">
+      Node:
+      <ul>
+        <li *ngFor="let node of nodes" (click)="selNode(node)" >
+          {{node.hostname}}
+        </li>
+      </ul>
+      <div class="add-btn">
+        <button type="button" (click)="addNode()">Add</button>
+      </div>
+    </div>
+
+    <div class="detail-node">
+      Node Detail:
+      <span  *ngIf="show_detail" class="one_node">
+      <li>hostname: {{selectedNode.hostname}}</li>
+      <li>uuid: {{selectedNode.uuid}}</li>
+      Health:
+      <li>uptime: {{selectedNode.health.uptime}}</li>
+      <li>healthy: {{selectedNode.health.healthy}}</li>
+      System Info:
+      <li>cpu: {{selectedNode.systemInfo.cpu}}</li>
+      <li>num_cores: {{selectedNode.systemInfo.numCores}}</li>
+      </span>
+    </div>
+    
+ </div>
+ <div *ngIf="add_one" class="footer">
+
+        Add Node:
+        <form #onenodeadd = "ngForm" (ngSubmit)="submit(onenodeadd.value,onenodeadd.valid)">
+              
+              <input name="hostname" ngModel required #hostname="ngModel">
+              <br/>
+              <input type = "text" name="uuid" placeholder = "uuid" ngModel>
+              <br/>
+              healthy:
+              <input type = "text" name="uptime" placeholder = "uptime" ngModel>
+              <input type = "text" name="healthy" placeholder = "healthy" ngModel>
+              <br/>
+              system_info:
+              <input type = "text" name="cpu" placeholder = "cpu" ngModel>
+              <input type = "text" name="num_cores" placeholder = "num_cores" ngModel>
+              <br/>
+              <br/>
+              <input type = "submit" value = "submit">
+           </form>
+
+ </div>
+
+</div>
+
+
